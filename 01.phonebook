@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01.phonebook
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            var phonebook = new Dictionary<string, string>();
+
+            while (input[0] != "END")
+            {
+                if (input[0] == "A")
+                {
+                    string name = input[1];
+                    string number = input[2];
+                    if (!phonebook.ContainsKey(name))
+                    {
+                        phonebook.Add(name, number);
+                    }
+                    else
+                    {
+                        phonebook[name] = number;                
+                    }
+                }
+                else 
+                {
+                    string searchedName = input[1];
+                    if (phonebook.ContainsKey(searchedName))
+                    {
+                        Console.WriteLine($"{searchedName} -> {phonebook[searchedName]}");
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Contact {searchedName} does not exist.");
+                    }
+                }
+                input= Console.ReadLine().Split(' ');
+            }
+        }
+    }
+}
