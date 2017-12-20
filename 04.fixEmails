@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _04.fixEmails
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var user = new Dictionary<string, string>();
+            while (true)
+            {
+                var name =Console.ReadLine();
+                if (name.Equals("stop"))
+                {
+                    break;
+                }
+                var mail =Console.ReadLine();
+                if (mail.Last() != 's' && mail.Last() != 'k')
+                {
+                    user.Add(name, mail);
+                }
+            }
+            foreach (var item in user)
+            {
+                    Console.WriteLine($"{item.Key} -> {item.Value}");
+            }
+        }
+    }
+}
